@@ -1,14 +1,7 @@
 using { com.rewe.digital.xmasbonus as xmsEmp } from '../db/schema';
 
-service DDTalksService {
+service XmasBonusService {
 
-    entity Talks as projection on xmsEmp.Employees {
-        personnelNumber,
-        firstname,
-        lastname,
-        position,
-        bonus,
-        year
-    }
+    entity Employees as projection on xmsEmp.Employees 
 
 }
