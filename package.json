@@ -24,7 +24,11 @@
       },
       "SFv2": {
         "kind": "odata-v2",
-        "model": "srv/external/SFv2"
+        "model": "srv/external/SFv2",
+        "credentials": {
+          "destination": "sap-successfactors-extensibility--api-access--tu",
+          "path": "/odata/v2/"
+        }
       }
     }
   }
