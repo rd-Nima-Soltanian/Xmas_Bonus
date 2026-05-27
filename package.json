@@ -2,7 +2,10 @@
   "name": "Xmas_Bonus",
   "version": "1.0.0",
   "dependencies": {
-    "@sap/cds": "^9"
+    "@sap/cds": "^9",
+    "@sap-cloud-sdk/connectivity": "^4",
+    "@sap-cloud-sdk/http-client": "^4",
+    "@sap-cloud-sdk/resilience": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2.4"
@@ -18,6 +21,10 @@
         "credentials": {
           "url": "db.sqlite"
         }
+      },
+      "SFv2": {
+        "kind": "odata-v2",
+        "model": "srv/external/SFv2"
       }
     }
   }
