@@ -1,0 +1,70 @@
+<mvc:View controllerName="rewe.hcm.masseditxmasbonus.controller.mainView"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}" class="sapUiResponsiveContentPadding">
+        <content>
+            <Table
+                id="employeesTable"
+                items="{/Employees}"
+                inset="false"
+                growing="true"
+                growingScrollToLoad="true"
+                sticky="ColumnHeaders,HeaderToolbar"
+                noDataText="{i18n>tableNoData}"
+            >
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <Title text="{i18n>employeesTableTitle}" level="H3" />
+                        <ToolbarSpacer />
+                        <SearchField
+                            width="18rem"
+                            placeholder="{i18n>searchPlaceholder}"
+                            liveChange=".onLiveSearch"
+                        />
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column width="11rem">
+                        <Text text="{i18n>personnelNumber}" />
+                    </Column>
+                    <Column width="10rem">
+                        <Text text="{i18n>firstName}" />
+                    </Column>
+                    <Column width="10rem">
+                        <Text text="{i18n>lastName}" />
+                    </Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true">
+                        <Text text="{i18n>position}" />
+                    </Column>
+                    <Column
+                        width="8rem"
+                        hAlign="End"
+                        minScreenWidth="Tablet"
+                        demandPopin="true"
+                    >
+                        <Text text="{i18n>bonus}" />
+                    </Column>
+                    <Column
+                        width="7rem"
+                        minScreenWidth="Desktop"
+                        demandPopin="true"
+                    >
+                        <Text text="{i18n>year}" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle" type="Inactive">
+                        <cells>
+                            <Text text="{personnelNumber}" />
+                            <Text text="{firstname}" />
+                            <Text text="{lastname}" />
+                            <Text text="{position}" />
+                            <ObjectNumber number="{bonus}" unit="EUR" emphasized="false" />
+                            <Text text="{year}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

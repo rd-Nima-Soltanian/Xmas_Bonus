@@ -2,16 +2,19 @@
   "name": "Xmas_Bonus",
   "version": "1.0.0",
   "dependencies": {
-    "@sap/cds": "^9",
     "@sap-cloud-sdk/connectivity": "^4",
     "@sap-cloud-sdk/http-client": "^4",
-    "@sap-cloud-sdk/resilience": "^4"
+    "@sap-cloud-sdk/resilience": "^4",
+    "@sap/cds": "^9"
   },
   "devDependencies": {
-    "@cap-js/sqlite": "^2.4"
+    "@cap-js/sqlite": "^2.4",
+    "cds-plugin-ui5": "^0.17.1"
   },
   "scripts": {
-    "start": "cds-serve"
+    "start": "cds-serve",
+    "watch-mass-edit-xmas": "cds watch --open rewe.hcm.masseditxmas/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-mass-edit-xmas-bonus": "cds watch --open rewe.hcm.masseditxmasbonus/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {
@@ -31,5 +34,8 @@
         }
       }
     }
-  }
+  },
+  "workspaces": [
+    "app/*"
+  ]
 }

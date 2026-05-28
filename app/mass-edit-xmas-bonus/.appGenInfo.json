@@ -1,0 +1,23 @@
+{
+  "generationParameters": {
+    "generationDate": "Thu May 28 2026 12:37:06 GMT+0200 (Central European Summer Time)",
+    "generatorPlatform": "Visual Studio Code",
+    "serviceType": "Local CAP",
+    "metadataFilename": "",
+    "serviceUrl": "http://localhost:4004/odata/v4/xmas-bonus/",
+    "appName": "mass-edit-xmas-bonus",
+    "appTitle": "Mass Edit Xmas Bonus",
+    "appDescription": "Edit the bonus of your employees.",
+    "appNamespace": "rewe.hcm",
+    "ui5Theme": "sap_horizon",
+    "ui5Version": "1.148.1",
+    "enableEslint": true,
+    "enableTypeScript": false,
+    "showMockDataInfo": false,
+    "generatorVersion": "1.25.0",
+    "template": "Basic V4",
+    "generatorName": "SAP Fiori Application Generator",
+    "entityRelatedConfig": [],
+    "launchText": "To launch the generated app, start your CAP project:  and navigate to the following location in your browser:\n\nhttp://localhost:4004/rewe.hcm.masseditxmasbonus/index.html"
+  }
+}
