@@ -1,0 +1,7 @@
+{
+  "service-specifications/SFEmpPayCompReccuringEmpComp.edmx": {
+    "packageName": "SFEmpPayCompReccuringEmpComp-service",
+    "directoryName": "SFEmpPayCompReccuringEmpComp-service",
+    "basePath": "/odata/v2"
+  }
+}

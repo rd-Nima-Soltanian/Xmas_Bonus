@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:atom="http://www.w3.org/2005/Atom">
+    <edmx:DataServices m:DataServiceVersion="2.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+        <Schema Namespace="SFODataSet" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:sf="http://www.successfactors.com/edm/sf" xmlns:sap="http://www.successfactors.com/edm/sap">
+            <EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="EmpPayCompRecurring" EntityType="SFOData.EmpPayCompRecurring" sap:label="Compensation" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:deletable="false">
+                    <Documentation>
+                        <Summary>EmpPayCompRecurring</Summary>
+                        <LongDescription>Contains recurring compensation information for an employee.</LongDescription>
+                        <sap:tagcollection>
+                            <sap:tag>Employee Central (EC)</sap:tag>
+                            <sap:tag>EC - Compensation Information</sap:tag>
+                        </sap:tagcollection>
+                    </Documentation>
+                </EntitySet>
+                <EntitySet Name="EmpCompensation" EntityType="SFOData.EmpCompensation" sap:label="Compensation Information" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:deletable="false">
+                    <Documentation>
+                        <Summary>EmpCompensation</Summary>
+                        <LongDescription>Contains effective dated recurring compensation history for an employee such as salary and recurring bonuses. This is useful reading all compensation changes over a period of time.</LongDescription>
+                        <sap:tagcollection>
+                            <sap:tag>Employee Central (EC)</sap:tag>
+                            <sap:tag>EC - Compensation Information</sap:tag>
+                            <sap:tag>Recommended</sap:tag>
+                        </sap:tagcollection>
+                    </Documentation>
+                </EntitySet>
+                <AssociationSet Name="EmpPayCompRecurring_Compensation" Association="SFOData.EmpPayCompRecurring_Compensation">
+                    <End EntitySet="EmpPayCompRecurring" Role="EmpPayCompRecurring"></End>
+                    <End EntitySet="EmpCompensation" Role="EmpCompensation_ref"></End>
+                </AssociationSet>
+            </EntityContainer>
+        </Schema>
+        <Schema Namespace="SFOData" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:sf="http://www.successfactors.com/edm/sf" xmlns:sap="http://www.successfactors.com/edm/sap">
+            <EntityType Name="EmpPayCompRecurring">
+                <Key>
+                    <PropertyRef Name="payComponent"></PropertyRef>
+                    <PropertyRef Name="seqNumber"></PropertyRef>
+                    <PropertyRef Name="startDate"></PropertyRef>
+                    <PropertyRef Name="userId"></PropertyRef>
+                </Key>
+                <Property Name="basePaycomponent" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="false" sap:label="Base Pay Component"></Property>
+                <Property Name="calculatedAmount" Type="Edm.Double" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="false" sap:filterable="false" sap:label="Calculated Amount"></Property>
+                <Property Name="createdBy" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="100" sap:label="Created By"></Property>
+                <Property Name="createdDateTime" Type="Edm.DateTimeOffset" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:label="Created Date Time"></Property>
+                <Property Name="createdOn" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:display-format="Date" sap:label="Created On"></Property>
+                <Property Name="currencyCode" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="32" sap:label="Currency"></Property>
+                <Property Name="effectiveLatestChange" Type="Edm.Boolean" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:label="effectiveLatestChange"></Property>
+                <Property Name="endDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:display-format="Date" sap:label="End Date"></Property>
+                <Property Name="frequency" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="30" sap:label="Frequency"></Property>
+                <Property Name="lastModifiedBy" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="100" sap:label="Last Modified By"></Property>
+                <Property Name="lastModifiedDateTime" Type="Edm.DateTimeOffset" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:label="Last Modified Date Time"></Property>
+                <Property Name="lastModifiedOn" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:display-format="Date" sap:label="Last Modified On"></Property>
+                <Property Name="notes" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="false" MaxLength="4000" sap:label="notes"></Property>
+                <Property Name="operation" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="false" sap:sortable="false" sap:filterable="false" sap:label="operation"></Property>
+                <Property Name="payComponent" Type="Edm.String" Nullable="false" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:label="Pay Component"></Property>
+                <Property Name="paycompvalue" Type="Edm.Double" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:label="Amount"></Property>
+                <Property Name="seqNumber" Type="Edm.Int64" Nullable="false" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:label="Sequence Number"></Property>
+                <Property Name="startDate" Type="Edm.DateTime" Nullable="false" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:display-format="Date" sap:label="Event Date"></Property>
+                <Property Name="userId" Type="Edm.String" Nullable="false" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="100" sap:label="User ID"></Property>
+                <NavigationProperty Name="compensationNav" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" Relationship="SFOData.EmpPayCompRecurring_Compensation" FromRole="EmpPayCompRecurring" ToRole="EmpCompensation_ref" sap:label="compensationNav"></NavigationProperty>
+            </EntityType>
+            <EntityType Name="EmpCompensation">
+                <Key>
+                    <PropertyRef Name="seqNumber"></PropertyRef>
+                    <PropertyRef Name="startDate"></PropertyRef>
+                    <PropertyRef Name="userId"></PropertyRef>
+                </Key>
+                <Property Name="createdBy" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="100" sap:label="Created By"></Property>
+                <Property Name="createdDateTime" Type="Edm.DateTimeOffset" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:label="Created Date Time"></Property>
+                <Property Name="createdOn" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:display-format="Date" sap:label="Created On"></Property>
+                <Property Name="customDouble1" Type="Edm.Double" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="false" sap:filterable="false" sap:label="Gross Monthly (FTE 1)"></Property>
+                <Property Name="customDouble2" Type="Edm.Double" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="false" sap:filterable="false" sap:label="Further recurrent Payments"></Property>
+                <Property Name="effectiveLatestChange" Type="Edm.Boolean" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:label="effectiveLatestChange"></Property>
+                <Property Name="endDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:display-format="Date" sap:label="End Date"></Property>
+                <Property Name="event" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="false" sap:filterable="false" MaxLength="45" sap:picklist="event" sap:label="Event"></Property>
+                <Property Name="eventReason" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="false" sap:label="Event Reason"></Property>
+                <Property Name="lastModifiedBy" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="100" sap:label="Last Modified By"></Property>
+                <Property Name="lastModifiedDateTime" Type="Edm.DateTimeOffset" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:label="Last Modified Date Time"></Property>
+                <Property Name="lastModifiedOn" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:display-format="Date" sap:label="Last Modified On"></Property>
+                <Property Name="operation" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="false" sap:sortable="false" sap:filterable="false" sap:label="operation"></Property>
+                <Property Name="seqNumber" Type="Edm.Int64" Nullable="false" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:label="Sequence Number"></Property>
+                <Property Name="startDate" Type="Edm.DateTime" Nullable="false" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:display-format="Date" sap:label="Event Date"></Property>
+                <Property Name="userId" Type="Edm.String" Nullable="false" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="100" sap:label="User ID"></Property>
+                <NavigationProperty Name="empPayCompRecurringNav" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" Relationship="SFOData.EmpPayCompRecurring_Compensation" FromRole="EmpCompensation_ref" ToRole="EmpPayCompRecurring" sap:label="empPayCompRecurringNav"></NavigationProperty>
+            </EntityType>
+            <Association Name="EmpPayCompRecurring_Compensation">
+                <End Type="SFOData.EmpPayCompRecurring" Multiplicity="*" Role="EmpPayCompRecurring"></End>
+                <End Type="SFOData.EmpCompensation" Multiplicity="0..1" Role="EmpCompensation_ref"></End>
+            </Association>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
